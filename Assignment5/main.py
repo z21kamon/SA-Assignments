@@ -27,7 +27,7 @@ def main():
             case '2':
                 username = input('Enter your username: ')
                 if not user_service.user_exists(username):
-                    print('You must be registered to post a message.')
+                    print('You must be registered to make a post.')
                     continue
                 post = input('Enter your message: ')
                 print('Message posted!' if post_service.post(username, post) else 'Message too long.')
@@ -37,8 +37,7 @@ def main():
                     print(f'[#{id_}] @{author}\n{message}\nLikes: {likes_count}\t\t\t{time}\n-------------------------------')
             case '4':
                 post_id = int(input('Enter the #id of the post you want to like: '))
-                like_service.like_post(post_id)
-                print('Message liked!')
+                print('Post liked!' if like_service.like_post(post_id) else 'Post not found!')
             case '5':
                 print('Goodbye!')
                 break
